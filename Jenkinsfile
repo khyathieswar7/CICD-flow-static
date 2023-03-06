@@ -9,7 +9,7 @@ pipeline {
         }
          stage('ci') {
             steps {
-                sh '''zip -r apache.zip ./index.html
+                sh '''zip -r ./index.html apache.zip
                 aws s3 cp apache s3://cicd-khyathi-static/'''
             }
         }
