@@ -2,11 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('git clone') {
-            steps {
-                sh 'git clone git@github.com:khyathieswar7/CICD-flow-static.git'
-            }
-        }
          stage('ci') {
             steps {
                 sh '''zip -r ./index.html apache.zip
