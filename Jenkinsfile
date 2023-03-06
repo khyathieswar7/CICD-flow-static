@@ -4,7 +4,7 @@ pipeline {
     stages {
          stage('ci') {
             steps {
-                sh '''zip -r ./index.html apache.zip
+                sh '''zip -r apache.zip ./index.html
                 aws s3 cp apache.zip s3://cicd-khyathi-static/'''
             }
         }
