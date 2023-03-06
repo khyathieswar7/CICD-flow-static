@@ -9,15 +9,15 @@ pipeline {
         }
          stage('ci') {
             steps {
-                zip -r apache.zip ./index.html
-                aws s3 cp apache s3://cicd-khyathi-static/
+                sh '''zip -r apache.zip ./index.html
+                aws s3 cp apache s3://cicd-khyathi-static/'''
             }
         }
         stage('cd') {
             steps {
-                aws s3 cp apache.zip s3://cicd-khyathi-static/apache.zip .
+                sh '''aws s3 cp apache.zip s3://cicd-khyathi-static/apache.zip .
                 unzip apache.zip
-                scp -r index.html root@172.31.51.85:/var/www/html/
+                scp -r index.html root@172.31.51.85:/var/www/html/'''
             }
         }
     }
