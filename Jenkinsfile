@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('git clone') {
             steps {
-                git clone "git@github.com:khyathieswar7/CICD-flow-static.git"
+                sh 'git clone git@github.com:khyathieswar7/CICD-flow-static.git'
             }
         }
          stage('ci') {
