@@ -9,8 +9,8 @@ pipeline {
         }
          stage('ci') {
             steps {
-                zip -r index.html apache.zip
-                aws s3 cp apache.zip s3://cicd-khyathi-static/
+                zip -r apache.zip ./index.html
+                aws s3 cp apache s3://cicd-khyathi-static/
             }
         }
         stage('cd') {
