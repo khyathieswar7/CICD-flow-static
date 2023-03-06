@@ -2,20 +2,19 @@ pipeline {
     agent any
 
     stages {
-         stage('ci') {
+        stage('ci') {
             steps {
-                sh '''zip -r apache.zip ./index.html
-                aws s3 cp apache.zip s3://cicd-khyathi-static/'''
+                sh ''' zip -r khyathi.zip ./index.html
+                aws s3 cp khyathi.zip s3://cicd-khyathi-static1/'''
             }
         }
-        stage('cd') {
+       stage('cd') {
             steps {
-                sh '''
-                rm -rf index.html
-                aws s3 cp s3://cicd-khyathi-static/apache.zip .
-                unzip apache.zip
-                scp -r index.html root@172.31.51.85:/var/www/html/'''
+                sh ''' rm -fr index.html
+                aws s3 cp s3://cicd-khyathi-static1/khyathi.zip .
+                unzip khyathi.zip
+                scp -r index.html root@172.31.57.16:/var/www/html/'''
             }
-        }
+        } 
     }
 }
